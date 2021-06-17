@@ -1,11 +1,12 @@
-import { serve } from "http/server.ts";
-import markup from './markup.ts';
+import { serve } from 'http/server.ts';
+import markup from './markup.tsx';
 
-const s = serve("0.0.0.0:8000");
 async function main() {
-  for await (const req of s) {
-    req.respond({ body: new TextEncoder().encode("<html><body>Hello World!\n" + markup) });
-  }
+    const body = new TextEncoder().encode(markup);
+    const s = serve({ port: 8000 });
+    console.log('http://localhost:8000/');
+    for await (const req of s) {
+        req.respond({ body });
+    }
 }
-
 main();

@@ -1,19 +1,24 @@
 {
   "name": "deno-jspm-app",
+  "version": "0.1.0",
   "scripts": {
-    "start": "deno --importmap=importmap.json --allow-read --allow-net main.ts"
+    "start": "deno --importmap=importmap-server.json --allow-net mod.ts",
+    "build": "jspm build ./packages/package-1/app.js"
   },
   "jspm": {
     "dependencies": {
-      "react": "^16.8.6",
-      "react-dom": "^16.8.6"
+      "react": "^16.12.0",
+      "react-dom": "^16.12.0"
     },
     "devDependencies": {
-      "@jspm/core": "^1.0.4"
+      "jspm": "git+https://github.com/jspm/jspm-cli",
+      "rollup": "^1.27.5"
     }
   },
-  "devDependencies": {
-    "@jspm/core": "^1.0.4"
+  "devDependencies": {},
+  "license": "MIT",
+  "exports": {
+    ".": "packages/package-1/app.js"
   },
   "type": "module"
 }
